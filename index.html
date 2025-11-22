@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalid Abdelrazk | Links</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(102, 126, 234, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+
+            /* keeps aspect ratio and fills the parent */
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 10px 60px rgba(102, 126, 234, 0.6), 0 0 30px rgba(118, 75, 162, 0.3);
+            }
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .bio {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+            margin-bottom: 36px;
+            padding: 0 10px;
+        }
+
+        .skills {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .skill-tag {
+            padding: 6px 14px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .link-btn:hover::before {
+            opacity: 1;
+        }
+
+        .link-btn:active {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .link-icon {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        /* QR Code - Fixed position on desktop, hidden on mobile */
+        .qr-section {
+            display: none;
+        }
+
+        @media (min-width: 769px) {
+            .qr-section {
+                display: block;
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                padding: 16px;
+                background: rgba(15, 12, 41, 0.9);
+                backdrop-filter: blur(20px);
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+                z-index: 100;
+                animation: slideIn 0.5s ease-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .qr-title {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 12px;
+                font-weight: 500;
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+            }
+
+            .qr-container {
+                background: white;
+                padding: 10px;
+                border-radius: 12px;
+                display: inline-block;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease;
+            }
+
+            .qr-container:hover {
+                transform: scale(1.05);
+            }
+
+            #qrcode {
+                width: 100px;
+                height: 100px;
+            }
+
+            #qrcode img {
+                width: 100px;
+                height: 100px;
+            }
+
+            #qrcode canvas {
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            .qr-hint {
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 10px;
+                margin-top: 10px;
+            }
+        }
+
+        .footer {
+            margin-top: 48px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            .profile-image {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .bio {
+                font-size: 14px;
+            }
+
+            .link-btn {
+                padding: 14px 20px;
+                font-size: 14px;
+            }
+
+            .link-btn.cv {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: #fff;
+                border: none;
+            }
+
+            .link-btn.cv:hover {
+                transform: translateY(-3px) scale(1.02);
+                box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="profile-image">
+            <div class="profile-image">
+                <img src="profile.jpg" alt="Khalid Abdelrazk" />
+            </div>
+        </div>
+
+        <h1 class="name">Khalid Abdelrazk</h1>
+        <p class="bio">Junior Data Analyst | Turning numbers into clarity and stories that make sense.</p>
+
+        <div class="skills">
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Excel</span>
+            <span class="skill-tag">Data Visualization</span>
+        </div>
+
+        <div class="links">
+            <a href="https://github.com/khalidabdelrazek" target="_blank" class="link-btn">
+                <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/khalid-abdelrazk-7719b32b3/" target="_blank" class="link-btn">
+                <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                LinkedIn
+            </a>
+
+            <a href="https://khalidabdelrazek.github.io/Khalid-Abdelrazk-Portifolio/" target="_blank" class="link-btn">
+                <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 4H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 14H5V8h14v10z" />
+                    <path d="M7 10h4v4H7zm6 0h4v2h-4zm0 4h4v2h-4z" />
+                </svg>
+                Portfolio
+            </a>
+
+            <a href="Khalid Abdelrazk Data Analyst Cv.pdf" target="_blank" class="link-btn">
+                <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM6 20V4h7v5h5v11H6z" />
+                    <path d="M12 12v4" />
+                    <path d="M10 14h4" />
+                </svg>
+                My CV
+            </a>
+
+
+            <a href="mailto:khalidabdelrazk4@gmail.com" class="link-btn">
+                <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                Email Me
+            </a>
+        </div>
+
+        <p class="footer">© 2025 Khalid Abdelrazk</p>
+    </div>
+
+    <!-- QR Code Section - Only visible on desktop -->
+    <div class="qr-section">
+        <p class="qr-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+            </svg>
+            Open on mobile
+        </p>
+        <div class="qr-container">
+            <div id="qrcode"></div>
+        </div>
+        <p class="qr-hint">Scan with your camera</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // Your actual links page URL
+        const pageURL = "https://khalidabdelrazek.github.io/KhalidAbdelrazkLinktree/";
+
+        // Only generate QR if element exists and screen is wide enough
+        if (window.innerWidth >= 769) {
+            new QRCode(document.getElementById("qrcode"), {
+                text: pageURL,
+                width: 100,
+                height: 100,
+                colorDark: "#302b63",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+
+</html>
